@@ -5,16 +5,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build..'
+                sh 'echo \'hello\''
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'whoami'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh 'uptime'
             }
         }
     }
