@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'uptime'
+                sh 'ip a'
             }
         }
     }
