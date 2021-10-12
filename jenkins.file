@@ -5,13 +5,13 @@ pipeline {
         stage('Preparing') {
             steps {
                 echo 'Build'
-                sh 'scp -v -r /var/lib/jenkins/workspace/pipeline/* klimnyuk@192.168.88.31:/home/klimnyuk/docker/'
+                sh 'scp -r /var/lib/jenkins/workspace/pipeline/* klimnyuk@192.168.88.31:/home/klimnyuk/docker/'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying'
-                sh 'pwd'
+                sh 'ssh klimnyuk@192.168.88.31 docker-compose -f docker/docker-compose.yml up -d'
             }
         }
     }
