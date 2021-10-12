@@ -4,20 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Build..'
+                echo 'Build'
                 sh 'echo \'hello\''
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'whoami'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
-                sh 'ip a'
+                echo 'Deploying'
+                sh 'docker-compose up -d'
             }
         }
     }
