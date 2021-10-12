@@ -5,7 +5,7 @@ pipeline {
         stage('Preparing') {
             steps {
                 echo 'Build'
-                sh 'scp -r /var/lib/jenkins/workspace/pipeline/* klimnyuk@192.168.88.31:/home/klimnyuk/docker'
+                sh 'scp -v -r /var/lib/jenkins/workspace/pipeline/* klimnyuk@192.168.88.31:/home/klimnyuk/docker'
             }
         }
         stage('Deploy') {
