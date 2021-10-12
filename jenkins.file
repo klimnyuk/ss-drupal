@@ -5,12 +5,6 @@ pipeline {
         stage('Preparing') {
             steps {
                 echo 'Build'
-		sh 'ssh klimnyuk@192.168.88.31 rm -rf /home/klimnyuk/docker'
-		sh 'ssh klimnyuk@192.168.88.31 rm -rf /home/klimnyuk/docker'
-		sh 'ssh klimnyuk@192.168.88.31 mkdir -p /home/klimnyuk/docker'
-		sh 'ssh klimnyuk@192.168.88.31 docker ps -q | xargs docker stop'
-		sh 'ssh klimnyuk@192.168.88.31 docker system prune -a -y'
-		sh 'ssh klimnyuk@192.168.88.31 docker volume prune -y'
                 sh 'scp -r /var/lib/jenkins/workspace/pipeline/* klimnyuk@192.168.88.31:/home/klimnyuk/docker'
             }
         }
