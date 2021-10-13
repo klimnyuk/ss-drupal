@@ -3,7 +3,6 @@ pipeline {
         stages {
         stage('Preparing') {
             steps {
-                echo 'Build'
                 sh 'scp -r /var/lib/jenkins/workspace/pipeline/* klimnyuk@192.168.88.31:/home/klimnyuk/docker/'
             }
         }
@@ -12,13 +11,7 @@ pipeline {
                 PASSWORD = credentials('PASSWORD')
             }
             steps {
-                echo 'Deploying'
-                sh '''
-                
-                ssh klimnyuk@192.168.88.31 PASSWORD=$PASSWORD docker-compose -f docker/docker-compose.yml up -d
-                
-                
-                '''
+                sh 'ssh klimnyuk@192.168.88.31 PASSWORD=$PASSWORD docker-compose -f docker/docker-compose.yml up -d'
 	          }
         }
     }
