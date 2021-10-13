@@ -7,7 +7,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - modules/var/www/html/modules
+      - modules:/var/www/html/modules
       - profiles:/var/www/html/profiles
       - themes:/var/www/html/themes
       - sites:/var/www/html/sites
