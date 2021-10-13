@@ -9,7 +9,7 @@ services:
     volumes:
       - modules/var/www/html/modules
       - profiles:/var/www/html/profiles
-      - themesdata:/var/www/html/themes
+      - themes:/var/www/html/themes
       - sites:/var/www/html/sites
     restart: always
 
