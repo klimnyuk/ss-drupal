@@ -16,7 +16,7 @@ services:
   postgres:
     image: postgres:10
     volumes:
-      - /home/klimnyuk/docker/docker_database/_data:/var/lib/postgresql/data
+      - database:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ${PASSWORD}
     restart: always
