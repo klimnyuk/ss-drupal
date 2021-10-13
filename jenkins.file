@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    environment {
-        PASSWORD = credentials ('PASSWORD')
-    }
-    stages {
+        stages {
         stage('Preparing') {
             steps {
                 echo 'Build'
@@ -11,10 +8,13 @@ pipeline {
             }
         }
         stage('Deploy') {
+            environment {
+                PASSWORD = credentials ('PASSWORD')
+            }
             steps {
                 echo 'Deploying'
                 sh '''
-                ssh klimnyuk@192.168.88.31 export PASSWORD=$PASSWORD
+                
                 ssh klimnyuk@192.168.88.31 docker-compose -f docker/docker-compose.yml up -d
                 
                 
