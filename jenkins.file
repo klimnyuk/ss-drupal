@@ -13,9 +13,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying'
-                sh 'ssh klimnyuk@192.168.88.31 docker-compose -f docker/docker-compose.yml up -d'
-		            sh 'echo $PASSWORD > pass'
-                sh 'export PASSWORD=$PASSWORD'
+                sh '''
+                ssh klimnyuk@192.168.88.31 export PASSWORD=$PASSWORD
+                ssh klimnyuk@192.168.88.31 docker-compose -f docker/docker-compose.yml up -d
+                
+                
+                '''
 	          }
         }
     }
