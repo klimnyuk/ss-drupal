@@ -7,10 +7,10 @@ services:
     ports:
       - 80:80
     volumes:
-      - /home/klimnyuk/docker/docker_modules/_data:/var/www/html/modules
-      - /home/klimnyuk/docker/docker_profiles/_data:/var/www/html/profiles
-      - /home/klimnyuk/docker/docker_themes/_data:/var/www/html/themes
-      - /home/klimnyuk/docker/docker_sites/_data:/var/www/html/sites
+      - modules/var/www/html/modules
+      - profiles:/var/www/html/profiles
+      - themesdata:/var/www/html/themes
+      - sites:/var/www/html/sites
     restart: always
 
   postgres:
@@ -20,9 +20,9 @@ services:
     environment:
       POSTGRES_PASSWORD: ${PASSWORD}
     restart: always
-#volumes:
-#    modules: {}
-#    profiles: {}
-#    themes: {}
-#    sites: {}
-#    database: {}
+volumes:
+    modules: {}
+    profiles: {}
+    themes: {}
+    sites: {}
+    database: {}
