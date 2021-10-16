@@ -3,7 +3,7 @@ pipeline {
         stages {
         stage('Preparing') {
             steps {
-                sh 'scp -r /var/lib/jenkins/workspace/pipeline/* klimnyuk@192.168.88.31:/home/klimnyuk/docker/'
+                sh 'scp -i /home/klimnyuk/.ssh/test.pem docker-compose.yml ubuntu@$(cat /home/klimnyuk/terraform/public_ip):/home/ubuntu/'
             }
         }
         stage('Deploy') {
@@ -11,7 +11,7 @@ pipeline {
                 PASSWORD = credentials('PASSWORD')
             }
             steps {
-                sh 'ssh klimnyuk@192.168.88.31 PASSWORD=$PASSWORD docker-compose -f docker/docker-compose.yml up -d'
+		sh 'ssh -i /home/klimnyuk/.ssh/test.pem ubuntu@$(cat /home/klimnyuk/terraform/public_ip) PASSWORD=$PASSWORD docker-compose up -d'
 	    }
         }
     }
