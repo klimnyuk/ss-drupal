@@ -3,7 +3,7 @@ pipeline {
         stages {
         stage('Preparing') {
             steps {
-                sh 'scp -i /home/klimnyuk/.ssh/test.pem docker-compose.yml ubuntu@$(cat /home/klimnyuk/terraform/public_ip):/home/ubuntu/'
+                sh 'scp -i ~/.ssh/test.pem docker-compose.yml ubuntu@$(cat /home/klimnyuk/terraform/public_ip):/home/ubuntu/'
             }
         }
         stage('Deploy') {
@@ -11,7 +11,7 @@ pipeline {
                 PASSWORD = credentials('PASSWORD')
             }
             steps {
-		sh 'ssh -i /home/klimnyuk/.ssh/test.pem ubuntu@$(cat /home/klimnyuk/terraform/public_ip) PASSWORD=$PASSWORD docker-compose up -d'
+		sh 'ssh -i ~/.ssh/test.pem ubuntu@$(cat /home/klimnyuk/terraform/public_ip) PASSWORD=$PASSWORD docker-compose up -d'
 	    }
         }
     }
