@@ -3,7 +3,7 @@ pipeline {
         stages {
         stage('Preparing') {
             steps {
-                sh 'scp -i ~/.ssh/test.pem docker-compose.yml -o "StrictHostKeyChecking no" ubuntu@$(cat /home/klimnyuk/terraform/public_ip):/home/ubuntu/'
+                sh 'scp -i ~/.ssh/test.pem -o "StrictHostKeyChecking no" docker-compose.yml ubuntu@$(cat /home/klimnyuk/terraform/public_ip):/home/ubuntu/'
             }
         }
         stage('Deploy') {
